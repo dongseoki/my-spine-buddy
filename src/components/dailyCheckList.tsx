@@ -1,8 +1,9 @@
 "use client";
 
+import { CheckListItem } from "@/types";
 import { useState } from "react";
 
-const checkListMockData = [
+const checkListMockData: CheckListItem[] = [
   { id: 1, name: "걸을 때 바른 자세 체크?", checked: false },
   { id: 2, name: "앉아 있을 때 바른 자세 체크?", checked: false },
   { id: 3, name: "취침시 바른 자세 체크?", checked: false },
