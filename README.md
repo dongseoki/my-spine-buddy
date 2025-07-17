@@ -1,12 +1,13 @@
 # test page
-* http://localhost:3001/
-* http://localhost:3001/search?category=exercise&date=2024-01-01
-* http://localhost:3001/days/2342
 
-
-
+- http://localhost:3001/
+- http://localhost:3001/search?category=exercise&date=2024-01-01
+- http://localhost:3001/days/2342
+- http://localhost:3000/api/day-detail/20250713
+- http://localhost:3000/api/hello
 
 # backup
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
