@@ -9,14 +9,20 @@ const checkListMockData: CheckListItem[] = [
   { id: 3, name: "취침시 바른 자세 체크?", checked: false },
 ];
 
-export default function DailyCheckList() {
-  console.log("DailyCheckList");
-  const [checkList, setCheckList] = useState(checkListMockData);
+export default function DailyCheckList({
+  initialCheckList,
+}: {
+  initialCheckList: CheckListItem[];
+}) {
+  console.log("DailyCheckList start");
+  const [checkList, setCheckList] = useState(initialCheckList);
   function handleCheck(id: number) {
-    console.log("id : ",id, "Checked : ");
-    const newCheckList = checkList.map((item) => item.id === id ? { ...item, checked: !item.checked } : item);
+    console.log("id : ", id, "Checked : ");
+    const newCheckList = checkList.map((item) =>
+      item.id === id ? { ...item, checked: !item.checked } : item
+    );
     setCheckList(newCheckList);
-    console.log("newCheckList : ",newCheckList);
+    console.log("newCheckList : ", newCheckList);
   }
   return (
     <div className="overflow-x-auto">
@@ -25,7 +31,13 @@ export default function DailyCheckList() {
           {checkList.map((item) => (
             <tr key={item.id}>
               <td className="px-4 py-2 border border-gray-300 flex items-center">
-                <input type="checkbox" id={item.name} className="mr-2" checked={item.checked} onChange={() => handleCheck(item.id)} />
+                <input
+                  type="checkbox"
+                  id={item.name}
+                  className="mr-2"
+                  checked={item.checked}
+                  onChange={() => handleCheck(item.id)}
+                />
                 <label htmlFor={item.name}>{item.name}</label>
               </td>
               <td className="px-4 py-2 border border-gray-300"></td>
@@ -35,4 +47,4 @@ export default function DailyCheckList() {
       </table>
     </div>
   );
-} 
+}

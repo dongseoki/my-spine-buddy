@@ -1,18 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
 
 // 응답 타입 정의
-interface CheckListItem {
+export interface CheckListItem {
   id: number;
   name: string;
   checked: boolean;
 }
 
-interface DayDetailResponse {
+export interface DayDetailResponseBody {
   feeling: string;
   checkList: CheckListItem[];
 }
 
-const dayValueSampleResponse: DayDetailResponse = {
+const dayValueSampleResponse: DayDetailResponseBody = {
   feeling: "good",
   checkList: [
     { id: 1, name: "걸을 때 바른 자세 체크?", checked: false },
@@ -21,7 +21,7 @@ const dayValueSampleResponse: DayDetailResponse = {
   ],
 };
 
-const dayDetailMockData: Record<string, DayDetailResponse> = {
+const dayDetailMockData: Record<string, DayDetailResponseBody> = {
   "20250713": {
     feeling: "good",
     checkList: [
@@ -43,7 +43,8 @@ const dayDetailMockData: Record<string, DayDetailResponse> = {
 export async function GET(
   req: NextRequest,
   { params }: { params: { dayValue: string } }
-): Promise<NextResponse<DayDetailResponse | { error: string }>> {
+): Promise<NextResponse<DayDetailResponseBody | { error: string }>> {
+  console.log("GET day-detail called");
   const dayValue = params.dayValue;
   if (dayDetailMockData[dayValue]) {
     return NextResponse.json(dayDetailMockData[dayValue]);

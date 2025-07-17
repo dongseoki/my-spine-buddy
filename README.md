@@ -5,6 +5,7 @@
 - http://localhost:3001/days/2342
 - http://localhost:3000/api/day-detail/20250713
 - http://localhost:3000/api/hello
+- http://localhost:3000/days/20250712
 
 # backup
 
