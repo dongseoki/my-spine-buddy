@@ -7,6 +7,7 @@ interface PageProps {
 }
 
 import DailyCheckList from "../../../components/dailyCheckList";
+import { notFound } from "next/navigation";
 
 export default async function DayPage({ params }: PageProps) {
   const { id } = await params;
@@ -16,6 +17,8 @@ export default async function DayPage({ params }: PageProps) {
   );
   if (!dayDetailResponse.ok) {
     console.error("Failed to fetch day detail");
+    if (dayDetailResponse.status === 404) {
+      notFound();
     return <div>Failed to fetch day detail</div>;
   }
   const dayDetailResponseBody: DayDetailResponseBody =
