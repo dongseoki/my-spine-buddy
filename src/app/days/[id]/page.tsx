@@ -12,7 +12,7 @@ import DailyCheckList from "../../../components/dailyCheckList";
 import { notFound } from "next/navigation";
 
 export default async function DayPage({ params }: PageProps) {
-  await delay(1500);
+  // await delay(1500);
   const { id } = await params;
   
   const dayDetailResponse = await fetch(
