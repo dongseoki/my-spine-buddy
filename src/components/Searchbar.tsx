@@ -3,7 +3,7 @@
 import { useState } from 'react';
 
 interface SearchbarProps {
-  onSearch: (date: string) => void;
+  onSearch?: (date: string) => void;
 }
 
 export default function Searchbar({ onSearch }: SearchbarProps) {
@@ -11,7 +11,11 @@ export default function Searchbar({ onSearch }: SearchbarProps) {
 
   const handleSearch = () => {
     if (dateInput.trim()) {
-      onSearch(dateInput.trim());
+      if (onSearch) {
+        onSearch(dateInput.trim());
+      } else {
+        alert(`search button clicked, entered date : ${dateInput.trim()}`);
+      }
     }
   };
 

@@ -1,5 +1,5 @@
 import { ReactNode, Suspense } from "react";
-import Searchbar from "@/components/Searchbar";
+import SearchbarWrapper from "@/components/SearchbarWrapper";
 
 export default function Layout({
   children,
@@ -9,7 +9,7 @@ export default function Layout({
   return (
     <div>
       <Suspense fallback={<div>Loading ...</div>}>
-        <Searchbar onSearch={(enteredDate) => {alert(`search button clicked, entered date : ${enteredDate}`);}} />
+        <SearchbarWrapper />
       </Suspense>
       {children}
     </div>
