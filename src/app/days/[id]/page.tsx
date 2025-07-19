@@ -19,6 +19,7 @@ export default async function DayPage({ params }: PageProps) {
     console.error("Failed to fetch day detail");
     if (dayDetailResponse.status === 404) {
       notFound();
+    }
     return <div>Failed to fetch day detail</div>;
   }
   const dayDetailResponseBody: DayDetailResponseBody =
