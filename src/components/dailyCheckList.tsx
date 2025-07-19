@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckListItem } from "@/types";
+import { CheckListItem } from "@/types";
 import { useState } from "react";
 
 const checkListMockData: CheckListItem[] = [
