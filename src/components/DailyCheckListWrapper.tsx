@@ -14,5 +14,6 @@ interface DailyCheckListWrapperProps {
 }
 
 export default function DailyCheckListWrapper({ initialCheckList }: DailyCheckListWrapperProps) {
+    // throw new Error("test");
   return <DailyCheckList initialCheckList={initialCheckList} />;
 } 

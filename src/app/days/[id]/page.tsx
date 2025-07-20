@@ -18,9 +18,10 @@ export default async function DayPage({ params }: PageProps) {
   );
   if (!dayDetailResponse.ok) {
     console.error("Failed to fetch day detail");
-    if (dayDetailResponse.status === 404) {
-      notFound();
-    }
+    // if (dayDetailResponse.status === 404) {
+    //   notFound();
+    // }
+    throw new Error("Failed to fetch day detail");
     return <div>Failed to fetch day detail</div>;
   }
   const dayDetailResponseBody: DayDetailResponseBody =
@@ -38,11 +39,6 @@ export default async function DayPage({ params }: PageProps) {
         </p>
       </div>
       <DailyCheckListWrapper initialCheckList={dayDetailResponseBody?.checkList || []} />
-      {/* {!!dayDetailResponseBody ? (
-        <DailyCheckListWrapper initialCheckList={dayDetailResponseBody?.checkList || []} />
-      ) : (
-        <DailyCheckListWrapper initialCheckList={[]} />
-      )} */}
     </div>
   );
 }
