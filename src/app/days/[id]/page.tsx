@@ -1,15 +1,13 @@
 import { DayDetailResponseBody } from "@/app/api/day-detail/[dayValue]/route";
+import { delay } from "@/util/delay";
+import { notFound } from "next/navigation";
+import DailyCheckListWrapper from "../../../components/DailyCheckListWrapper";
 
 interface PageProps {
   params: Promise<{
     id: string;
   }>;
 }
-
-import { delay } from "@/util/delay";
-
-import DailyCheckList from "../../../components/dailyCheckList";
-import { notFound } from "next/navigation";
 
 export default async function DayPage({ params }: PageProps) {
   // await delay(1500);
@@ -39,7 +37,12 @@ export default async function DayPage({ params }: PageProps) {
           여기에 허리일지 {id}의 상세 내용이 표시됩니다.
         </p>
       </div>
-      <DailyCheckList initialCheckList={dayDetailResponseBody.checkList} />
+      <DailyCheckListWrapper initialCheckList={dayDetailResponseBody?.checkList || []} />
+      {/* {!!dayDetailResponseBody ? (
+        <DailyCheckListWrapper initialCheckList={dayDetailResponseBody?.checkList || []} />
+      ) : (
+        <DailyCheckListWrapper initialCheckList={[]} />
+      )} */}
     </div>
   );
 }
