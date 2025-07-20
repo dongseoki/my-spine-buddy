@@ -1,7 +1,6 @@
 import { DayDetailResponseBody } from "@/app/api/day-detail/[dayValue]/route";
-import { delay } from "@/util/delay";
-import { notFound } from "next/navigation";
 import DailyCheckListWrapper from "../../../components/DailyCheckListWrapper";
+import CommentSection from "../../../components/CommentSection";
 
 interface PageProps {
   params: Promise<{
@@ -39,6 +38,9 @@ export default async function DayPage({ params }: PageProps) {
         </p>
       </div>
       <DailyCheckListWrapper initialCheckList={dayDetailResponseBody?.checkList || []} />
+      
+      {/* 댓글 섹션 */}
+      <CommentSection dayId={id} />
     </div>
   );
 }
